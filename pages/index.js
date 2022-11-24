@@ -3,7 +3,7 @@ import Link from "next/link";
 const index = () => {
   return (
     <div>
-      <Link href="/signup/signup"> signup</Link>
+      <h1>Welcome to ...</h1>
     </div>
   );
 };
