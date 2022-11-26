@@ -1,7 +1,7 @@
 import Image from "next/image";
-import barter from "./images/barter.jpg";
+import barter from "../public/images/barter.jpg";
 
-export default Logo = () => {
+const logo = () => {
   return (
     <Image
       alt="logo"
@@ -12,3 +12,5 @@ export default Logo = () => {
     />
   );
 };
+
+export default logo;
