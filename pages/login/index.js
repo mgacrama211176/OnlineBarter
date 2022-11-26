@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Box, Typography, TextField } from "@mui/material";
+import { Container, Box, Typography, TextField, Button } from "@mui/material";
 import Logo from "../../component/logo";
 import Head from "next/head";
 import { Be_Vietnam_Pro } from "@next/font/google";
@@ -9,6 +9,12 @@ const BeVietnamPro = Be_Vietnam_Pro({
 });
 const container = {
   display: "flex",
+};
+
+const InputBoxContainer = {
+  display: "flex",
+  flexFlow: "wrap column",
+  gap: "10px",
 };
 
 const index = () => {
@@ -39,9 +45,9 @@ const index = () => {
           // color: "#2EA8D1,",
         }}
       >
-        {/* <div>
+        <div>
           <Logo />
-        </div> */}
+        </div>
         <Typography
           variant="body"
           className={BeVietnamPro.className}
@@ -55,7 +61,11 @@ const index = () => {
         >
           "Trade your items so that it can benefit others"
         </Typography>
-        <TextField variant="outlined" label="Email" />
+        <Box sx={InputBoxContainer}>
+          <TextField variant="outlined" label="Email" />
+          <TextField variant="outlined" label="Password" />
+          <Button variant="outlined">Login</Button>
+        </Box>
       </Box>
 
       <Box></Box>
