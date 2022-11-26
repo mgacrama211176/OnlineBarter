@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 
-const index = () => {
+const HomePage = () => {
   return (
     <div>
       <Head>
@@ -12,4 +12,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default HomePage;
