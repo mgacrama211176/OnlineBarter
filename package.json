@@ -13,12 +13,14 @@
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.10.15",
+    "@next/font": "^13.0.5",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.4",
     "next": "13.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.39.4"
+    "react-hook-form": "^7.39.4",
+    "react-icons": "^4.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

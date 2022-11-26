@@ -1,12 +1,14 @@
 import React from "react";
-import { Container, Box } from "@mui/material";
+import { Container, Box, Typography, TextField } from "@mui/material";
 import Logo from "../../component/logo";
 import Head from "next/head";
-import Link from "next/link";
+import { Be_Vietnam_Pro } from "@next/font/google";
 
+const BeVietnamPro = Be_Vietnam_Pro({
+  weight: "100",
+});
 const container = {
   display: "flex",
-  border: "1px solid black",
 };
 
 const index = () => {
@@ -32,16 +34,31 @@ const index = () => {
           display: "flex",
           flexFlow: "wrap row",
           fontFamily: "'Bellefair', serif",
+          justifyContent: "center",
+          alignContent: "center",
           // color: "#2EA8D1,",
         }}
       >
-        <div>
+        {/* <div>
           <Logo />
-        </div>
-        <div>
-          <h1>Pamatigayon</h1>
-        </div>
+        </div> */}
+        <Typography
+          variant="body"
+          className={BeVietnamPro.className}
+          sx={{
+            color: "#8C8888",
+            width: "70%",
+            textAlign: "center",
+            fontSize: "14px",
+            margin: "10px",
+          }}
+        >
+          "Trade your items so that it can benefit others"
+        </Typography>
+        <TextField variant="outlined" label="Email" />
       </Box>
+
+      <Box></Box>
     </Container>
   );
 };
