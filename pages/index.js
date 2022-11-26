@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const index = () => {
+const HomePage = () => {
   return (
     <div>
       <Link href="/signup/signup"> signup</Link>
@@ -8,4 +8,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default HomePage;
