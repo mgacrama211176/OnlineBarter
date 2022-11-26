@@ -15,6 +15,11 @@ const InputBoxContainer = {
   display: "flex",
   flexFlow: "wrap column",
   gap: "10px",
+  width: "80%",
+};
+
+const ThumbnailIcons = {
+  width: "30px",
 };
 
 const index = () => {
@@ -42,7 +47,6 @@ const index = () => {
           fontFamily: "'Bellefair', serif",
           justifyContent: "center",
           alignContent: "center",
-          // color: "#2EA8D1,",
         }}
       >
         <div>
@@ -65,10 +69,25 @@ const index = () => {
           <TextField variant="outlined" label="Email" />
           <TextField variant="outlined" label="Password" />
           <Button variant="outlined">Login</Button>
+
+          <Button variant="outlined" sx={{ display: "flex", gap: "45px" }}>
+            Sign in using Google
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
+              style={ThumbnailIcons}
+            />
+          </Button>
+          <Button variant="outlined" sx={{ display: "flex", gap: "30px" }}>
+            Sign in using Facebook
+            <div>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/174/174848.png"
+                style={ThumbnailIcons}
+              />
+            </div>
+          </Button>
         </Box>
       </Box>
-
-      <Box></Box>
     </Container>
   );
 };
