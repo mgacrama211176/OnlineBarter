@@ -9,9 +9,12 @@ const Header = () => {
       sx={{
         display: "flex",
         flexFlow: "row wrap",
-        justifyContent: "space-evenly",
+        padding: "0 20px",
+        justifyContent: "space-between",
         maxWidth: "1440px",
+        margin: "0 auto",
         alignItems: "center",
+        borderBottom: "1px solid #e3e3e3",
       }}
     >
       <Box>
