@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Container, Box, Typography, TextField, Button } from "@mui/material";
-import Logo from "../../component/logo";
 import Head from "next/head";
 import { Be_Vietnam_Pro } from "@next/font/google";
-import Link from "next/link";
+import Logo from "../../component/logo";
+
+//MUI
+import { Container, Box, Typography, TextField, Button } from "@mui/material";
 
 //ICONS
 import { FcGoogle } from "react-icons/fc";
 import { RiFacebookBoxFill } from "react-icons/ri";
+
+//Responsive themes
+import { BoxContainer, ImgGone } from "../../library/media";
 
 const BeVietnamPro = Be_Vietnam_Pro({
   weight: "100",
@@ -25,10 +29,6 @@ const InputBoxContainer = {
   marginBottom: "20px",
 };
 
-const ThumbnailIcons = {
-  width: "30px",
-};
-
 const ButtonHoverEffect = {
   "&:hover": {
     fontWeight: "bold",
@@ -41,6 +41,10 @@ const loginButton = {
   color: "white",
   fontWeight: "bold",
   height: "3rem",
+  "&:hover": {
+    backgroundColor: "#2EA8D1",
+    color: "white",
+  },
 };
 
 const mediaButton = {
@@ -48,10 +52,21 @@ const mediaButton = {
   gap: "45px",
 };
 
+const imgContainer = {
+  display: "block",
+};
+
 const ImgStyle = {
   width: "100%",
   borderRadius: "10px 0px 0px 10px",
-  display: { md: "none" },
+};
+
+const Slogan = {
+  color: "#8C8888",
+  width: "70%",
+  textAlign: "center",
+  fontSize: "14px",
+  margin: "10px 0px 30px 0px ",
 };
 
 const index = () => {
@@ -63,7 +78,7 @@ const index = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "100px",
+        padding: "25px",
       }}
     >
       <Head>
@@ -80,41 +95,26 @@ const index = () => {
       {/* START OF FORM */}
       <Container sx={container}>
         <Box sx={{ objectFit: "cover" }}>
-          <div>
-            <img
-              src="https://images.pexels.com/photos/4050346/pexels-photo-4050346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              style={ImgStyle}
-            ></img>
-          </div>
+          <ImgGone>
+            <div sx={imgContainer}>
+              <img
+                src="https://images.pexels.com/photos/4050346/pexels-photo-4050346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                style={ImgStyle}
+              ></img>
+            </div>
+          </ImgGone>
         </Box>
         {/* INPUT BOXES */}
         {login ? (
           <>
-            <Box
-              sx={{
-                border: "solid black 1px",
-                borderRadius: "0px 10px 10px 0px",
-                display: "flex",
-                flexFlow: "wrap row",
-                fontFamily: "'Bellefair', serif",
-                justifyContent: "center",
-                alignContent: "center",
-                width: "50%",
-              }}
-            >
+            <BoxContainer>
               <div>
                 <Logo />
               </div>
               <Typography
                 variant="body"
                 className={BeVietnamPro.className}
-                sx={{
-                  color: "#8C8888",
-                  width: "70%",
-                  textAlign: "center",
-                  fontSize: "14px",
-                  margin: "10px 0px 30px 0px ",
-                }}
+                sx={Slogan}
               >
                 "Trade your items so that it can benefit others"
               </Typography>
@@ -153,35 +153,18 @@ const index = () => {
                 </Button>
                 "
               </Typography>
-            </Box>
+            </BoxContainer>
           </>
         ) : (
           <>
-            <Box
-              sx={{
-                border: "solid black 1px",
-                borderRadius: "0px 10px 10px 0px",
-                display: "flex",
-                flexFlow: "wrap row",
-                fontFamily: "'Bellefair', serif",
-                justifyContent: "center",
-                alignContent: "center",
-                width: "50%",
-              }}
-            >
+            <BoxContainer>
               <div>
                 <Logo />
               </div>
               <Typography
                 variant="body"
                 className={BeVietnamPro.className}
-                sx={{
-                  color: "#8C8888",
-                  width: "70%",
-                  textAlign: "center",
-                  fontSize: "14px",
-                  margin: "10px 0px 30px 0px ",
-                }}
+                sx={Slogan}
               >
                 "Trade your items so that it can benefit others"
               </Typography>
@@ -223,7 +206,7 @@ const index = () => {
                   {login ? "Signup" : "Login"}
                 </Button>
               </Typography>
-            </Box>
+            </BoxContainer>
           </>
         )}
       </Container>
