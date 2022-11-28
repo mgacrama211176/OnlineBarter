@@ -12,7 +12,9 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LocalOfferRoundedIcon from "@mui/icons-material/LocalOfferRounded";
+
+import { Box, Button } from "@mui/material";
 
 export default function RecipeReviewCard() {
   const [expanded, setExpanded] = React.useState(false);
@@ -23,15 +25,20 @@ export default function RecipeReviewCard() {
 
   return (
     <Card sx={{ maxWidth: 300 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
-        title="Pre-Owned Iphone12"
-        subheader="September 14, 2016"
-      />
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              R
+            </Avatar>
+          }
+          title="Pre-Owned Iphone12"
+          subheader="September 14, 2016"
+        />
+        <Typography variant="p" sx={{ fontSize: "12px", color: "gray" }}>
+          12 views
+        </Typography>
+      </Box>
       <CardMedia
         component="img"
         height="194"
@@ -50,8 +57,14 @@ export default function RecipeReviewCard() {
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
-          <ShareIcon />
+          <LocalOfferRoundedIcon />
         </IconButton>
+        <Button
+          variant="outlined"
+          sx={{ fontSize: "12px", marginLeft: "auto" }}
+        >
+          View Listing
+        </Button>
       </CardActions>
     </Card>
   );
