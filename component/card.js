@@ -47,9 +47,16 @@ export default function RecipeReviewCard() {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          TF: PS3
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Date Purchased: 10/22/22
+        </Typography>
+        <br />
+        <Typography variant="body2" color="text.secondary">
+          Description: <br />
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
+          doloribus?
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
