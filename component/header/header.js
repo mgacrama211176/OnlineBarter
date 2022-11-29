@@ -8,9 +8,15 @@ const Header = () => {
     <Box
       sx={{
         display: "flex",
-        flexFlow: "row wrap",
+        flexFlow: {
+          xs: "row nowrap",
+          sm: "row wrap",
+        },
         padding: "0 20px",
-        justifyContent: "space-between",
+        justifyContent: {
+          xs: "center",
+          sm: "space-between",
+        },
         maxWidth: "1440px",
         margin: "0 auto",
         alignItems: "center",
