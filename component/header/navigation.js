@@ -20,7 +20,9 @@ const HeaderNavigation = () => {
 
       <IoIosNotifications size={30} />
 
-      <MdAccountCircle size={40} />
+      <Link href="../../login">
+        <MdAccountCircle size={40} />
+      </Link>
     </Box>
   );
 };
