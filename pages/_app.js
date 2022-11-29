@@ -5,6 +5,9 @@ import { theme } from "../library/theme";
 import createEmotionCache from "../library/createEmotionCache";
 import { CacheProvider } from "@emotion/react";
 
+//NextAuth
+import { SessionProvider } from "next-auth/react";
+
 const clientSideEmotionCache = createEmotionCache();
 
 function MyApp({
@@ -13,13 +16,15 @@ function MyApp({
   pageProps,
 }) {
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </CacheProvider>
+    <SessionProvider>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </CacheProvider>
+    </SessionProvider>
   );
 }
 

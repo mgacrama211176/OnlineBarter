@@ -90,7 +90,15 @@ const CategoryFilters = () => {
           }}
           key={index}
         >
-          <category.icon sx={{ fontSize: "25px", color: "gray" }} />
+          <category.icon
+            sx={{
+              fontSize: {
+                xs: "20px",
+                md: "25px",
+              },
+              color: "gray",
+            }}
+          />
           <Typography
             variant="p"
             sx={{

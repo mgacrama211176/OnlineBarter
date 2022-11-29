@@ -10,9 +10,16 @@ const HeaderSearch = () => {
       <TextField
         type={"text"}
         sx={{
-          width: "300px",
+          width: {
+            xs: "90%",
+            sm: "100%",
+            md: "100%",
+          },
           "& .MuiInputBase-root": {
-            height: 40,
+            height: {
+              xs: 30,
+              md: 40,
+            },
           },
         }}
         placeholder="Search"

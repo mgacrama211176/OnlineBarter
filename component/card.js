@@ -28,7 +28,7 @@ export default function RecipeReviewCard() {
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+            <Avatar sx={{ bgcolor: "primary.main" }} aria-label="recipe">
               R
             </Avatar>
           }
