@@ -28,7 +28,14 @@ const HeaderNavigation = () => {
             },
           }}
         >
-          <ListItem>
+          <ListItem
+            sx={{
+              "&:hover": {
+                color: "#001935",
+                fontWeight: "bolder",
+              },
+            }}
+          >
             <Link href="/">Whats New?</Link>
           </ListItem>
           <ListItem>

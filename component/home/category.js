@@ -76,6 +76,7 @@ const CategoryFilters = () => {
         flexFlow: "row wrap",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: "20px",
       }}
     >
       {category.map((category, index) => (
@@ -85,7 +86,7 @@ const CategoryFilters = () => {
             flexFlow: "column nowrap",
             alignItems: "center",
             paddingInline: "8px",
-            marginTop: "2%",
+            paddingTop: "20px",
             cursor: "pointer",
           }}
           key={index}
