@@ -52,8 +52,6 @@ const index = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "center",
-              gap: 5,
               alignItems: "center",
             }}
           >
@@ -63,10 +61,6 @@ const index = () => {
                 <FaMapMarkerAlt />
                 Cebu City
               </h2>
-            </Box>
-
-            <Box>
-              <Button variant="contained">Edit Profile</Button>
             </Box>
           </Box>
           <Rating />
@@ -112,7 +106,8 @@ const index = () => {
               </TableContainer>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "center", gap: 5 }}>
-              <Button variant="contained">About</Button>
+              <Button variant="contained">Edit Profile</Button>
+
               <Button variant="contained">Edit Password</Button>
             </Box>
           </Box>
