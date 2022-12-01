@@ -24,20 +24,31 @@ export default function RecipeReviewCard() {
   };
 
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card
+      sx={{
+        maxWidth: {
+          md: 350,
+          lg: 300,
+        },
+        paddingInline: "10px",
+      }}
+    >
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+            <Avatar sx={{ bgcolor: "primary.main" }} aria-label="recipe">
               R
             </Avatar>
           }
           title="Pre-Owned Iphone12"
-          subheader="September 14, 2016"
+          subheader="10/22/21"
+          sx={{
+            fontSize: {
+              md: "9px",
+              lg: "16px",
+            },
+          }}
         />
-        <Typography variant="p" sx={{ fontSize: "12px", color: "gray" }}>
-          12 views
-        </Typography>
       </Box>
       <CardMedia
         component="img"
@@ -52,8 +63,14 @@ export default function RecipeReviewCard() {
         <Typography variant="body2" color="text.secondary">
           Date Purchased: 10/22/22
         </Typography>
-        <br />
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="p" sx={{ fontSize: "12px", color: "gray" }}>
+          12 views
+        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ marginTop: "20px" }}
+        >
           Description: <br />
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
           doloribus?
@@ -68,7 +85,14 @@ export default function RecipeReviewCard() {
         </IconButton>
         <Button
           variant="outlined"
-          sx={{ fontSize: "12px", marginLeft: "auto" }}
+          sx={{
+            fontSize: "12px",
+            marginLeft: "auto",
+            "&:hover": {
+              bgcolor: "#2EA8D1",
+              color: "white",
+            },
+          }}
         >
           View Listing
         </Button>

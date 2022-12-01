@@ -1,29 +1,80 @@
-import { Box, List, ListItem } from "@mui/material";
+import { Box, Button, IconButton, List, ListItem } from "@mui/material";
 import Link from "next/link";
-import { MdAccountCircle } from "react-icons/md";
-import { IoIosNotifications } from "react-icons/io";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const HeaderNavigation = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <List>
-        <ListItem>
-          <Link href="/">Whats New?</Link>
-        </ListItem>
-      </List>
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: {
+            lg: "space-between",
+          },
+          gap: {
+            xs: "5px",
+            sm: "10px",
+          },
+        }}
+      >
+        <List
+          sx={{
+            display: {
+              xs: "none",
+              md: "flex",
+              lg: "flex",
+            },
+          }}
+        >
+          <ListItem
+            sx={{
+              "&:hover": {
+                color: "#001935",
+                fontWeight: "bolder",
+              },
+            }}
+          >
+            <Link href="/">Whats New?</Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/">
+              <Button
+                variant="contained"
+                sx={{
+                  width: "120px",
+                  color: "#fff",
+                  "&:hover": {
+                    fontWeight: "bold",
+                  },
+                }}
+              >
+                List Item
+              </Button>
+            </Link>
+          </ListItem>
+        </List>
 
-      <IoIosNotifications size={30} />
-
-      <Link href="../../login">
-        <MdAccountCircle size={40} />
-      </Link>
-    </Box>
+        <NotificationsIcon
+          sx={{
+            display: { md: "inline-block" },
+            fontSize: {
+              xs: "25px",
+              md: "30px",
+            },
+          }}
+        />
+        <AccountCircleIcon
+          sx={{
+            fontSize: {
+              xs: "30px",
+              md: "40px",
+            },
+          }}
+        />
+      </Box>
+    </>
   );
 };
 
