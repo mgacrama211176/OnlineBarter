@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Logo from "../logo";
 import HeaderNavigation from "./navigation";
 import HeaderSearch from "./headerSearch";
+import TemporaryDrawer from "./drawer/drawer";
 
 const Header = () => {
   return (
@@ -39,6 +40,8 @@ const Header = () => {
       <Box>
         <HeaderNavigation />
       </Box>
+
+      {/* <TemporaryDrawer /> */}
     </Box>
   );
 };
