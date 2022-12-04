@@ -4,7 +4,8 @@ import barter from "../public/images/barter.jpg";
 import { Bellefair } from "@next/font/google";
 
 import Link from "next/link";
-import MenuIcon from "@mui/icons-material/Menu";
+
+import TemporaryDrawer from "./header/drawer/drawer";
 
 const BelleFair = Bellefair({
   weight: "400",
@@ -58,17 +59,7 @@ const Logo = () => {
           display: { xs: "inline-block", sm: "inline-block", md: "none" },
         }}
       >
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="open drawer"
-          // onClick={toggleDrawer(true)}
-          sx={{
-            mr: 2,
-          }}
-        >
-          <MenuIcon sx={{ color: "gray" }} />
-        </IconButton>
+        <TemporaryDrawer />
       </Box>
     </>
   );

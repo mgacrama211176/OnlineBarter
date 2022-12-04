@@ -1,15 +1,20 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Link from "next/link";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
-import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
+
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import CreateIcon from "@mui/icons-material/Create";
 import Box from "@mui/material/Box";
 
-export const list = (anchor) => (
-  <Box sx={{ width: "200px" }} role="presentation">
-    <List>
+export const list = () => (
+  <Box sx={{ width: "100%" }}>
+    <List
+      sx={{
+        display: "flex",
+        margin: "auto",
+        width: "100%",
+      }}
+    >
       <ListItem
         sx={{
           "&:hover": {
@@ -22,11 +27,12 @@ export const list = (anchor) => (
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "10px",
+            gap: "5px",
+            margin: "auto",
           }}
         >
-          <AccountCircleIcon sx={{ fontSize: "25px" }} />
-          My Profile
+          <QuestionMarkIcon sx={{ fontSize: "25px" }} />
+          What's New?
         </Link>
       </ListItem>
       <ListItem
@@ -41,51 +47,12 @@ export const list = (anchor) => (
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "10px",
+            gap: "5px",
+            margin: "auto",
           }}
         >
-          <FeaturedPlayListIcon sx={{ fontSize: "25px" }} />
-          My Listings
-        </Link>
-      </ListItem>
-
-      <ListItem
-        sx={{
-          "&:hover": {
-            bgcolor: "red",
-          },
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}
-        >
-          <LocalOfferIcon sx={{ fontSize: "25px" }} />
-          My Offers
-        </Link>
-      </ListItem>
-
-      <ListItem
-        sx={{
-          "&:hover": {
-            bgcolor: "red",
-          },
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}
-        >
-          <SwapHorizIcon sx={{ fontSize: "25px" }} />
-          Sent Offers
+          <CreateIcon sx={{ fontSize: "25px" }} />
+          List Item
         </Link>
       </ListItem>
     </List>

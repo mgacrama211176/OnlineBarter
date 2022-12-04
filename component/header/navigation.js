@@ -1,6 +1,6 @@
 import { Box, Button, IconButton, List, ListItem } from "@mui/material";
 import Link from "next/link";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AccountMenu from "./profile";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const HeaderNavigation = () => {
@@ -65,14 +65,7 @@ const HeaderNavigation = () => {
             },
           }}
         />
-        <AccountCircleIcon
-          sx={{
-            fontSize: {
-              xs: "30px",
-              md: "40px",
-            },
-          }}
-        />
+        <AccountMenu />
       </Box>
     </>
   );
