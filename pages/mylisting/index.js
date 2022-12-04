@@ -4,7 +4,13 @@ import { Box } from "@mui/material";
 
 const MyListing = () => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+      }}
+    >
       <Listing />
       <Listing />
       <Listing />
