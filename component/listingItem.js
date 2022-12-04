@@ -1,4 +1,7 @@
 import * as React from "react";
+import Image from "next/image";
+import nothing from "../public/images/nothing.jpg";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -18,16 +21,30 @@ const buttons = [
 
 export default function MultiActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: "100%", display: "flex", flexDirection: "row" }}>
-      <CardActionArea sx={{ display: "flex", flexDirection: "row" }}>
-        <CardMedia
-          component="img"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSh-jnwAqvpzDODKJhZ8VAkI_aqGTMMgf0bw&usqp=CAU"
-          alt="green iguana"
-          sx={{ backgroundRepeat: "no-repeat", backgroundSize: "auto" }}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+    <Card
+      variant="none"
+      sx={{
+        maxWidth: "100%",
+        display: "flex",
+        flexDirection: {
+          xs: "column",
+          sm: "column",
+          md: "row",
+        },
+        paddingBlock: "5px",
+        height: "210px",
+      }}
+    >
+      <CardActionArea
+        sx={{ display: "flex", flexDirection: "row", paddingInline: "10px" }}
+      >
+        <Image src={nothing} alt="Nothing Phone" width={230} height={180} />
+        <CardContent
+          sx={{
+            height: "100%",
+          }}
+        >
+          <Typography gutterBottom variant="h5">
             Nothing Phone (1)
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -42,25 +59,34 @@ export default function MultiActionAreaCard() {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <Box>
-        <Typography variant="body2" color="text.secondary">
-          Status
-        </Typography>
-        <ButtonGroup
-          orientation="vertical"
-          aria-label="vertical outlined button group"
-          variant="contained"
-        >
-          {buttons}
-        </ButtonGroup>
-      </Box>
-      <Box>
-        <Typography variant="body2" color="text.secondary">
-          Offers
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          You have 10 offers
-        </Typography>
+      <Box
+        sx={{
+          width: "400px",
+          display: "flex",
+          alignItems: "center",
+          flexFlow: "column wrap",
+          paddingBlock: "20px",
+        }}
+      >
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <ButtonGroup
+            aria-label="vertical outlined button group"
+            variant="text"
+            sx={{
+              width: "100%",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {buttons}
+          </ButtonGroup>
+        </Box>
+        <Box sx={{ marginTop: "10px", width: "100%", textAlign: "center" }}>
+          <Typography variant="body2" color="text.secondary">
+            You currently have 10 offers
+          </Typography>
+        </Box>
       </Box>
     </Card>
   );
