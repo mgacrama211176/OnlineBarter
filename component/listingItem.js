@@ -22,23 +22,43 @@ const buttons = [
 export default function MultiActionAreaCard() {
   return (
     <Card
-      variant="none"
+      variant={{
+        xs: "outlined",
+        md: "none",
+      }}
       sx={{
         maxWidth: "100%",
-        display: "flex",
-        flexDirection: {
-          xs: "column",
-          sm: "column",
-          md: "row",
+
+        display: {
+          xs: "block",
+          sm: "block",
+          md: "flex",
         },
-        paddingBlock: "5px",
-        height: "210px",
+        textAlign: {
+          xs: "center",
+          md: "left",
+        },
+        border: {
+          xs: "1px solid #f3f3f3",
+          md: "none",
+        },
+        height: "100%",
+        margin: "10px 10px",
       }}
     >
       <CardActionArea
-        sx={{ display: "flex", flexDirection: "row", paddingInline: "10px" }}
+        sx={{
+          display: {
+            xs: "block",
+            sm: "block",
+            md: "flex",
+          },
+
+          paddingInline: "10px",
+        }}
       >
         <Image src={nothing} alt="Nothing Phone" width={230} height={180} />
+
         <CardContent
           sx={{
             height: "100%",
@@ -46,37 +66,42 @@ export default function MultiActionAreaCard() {
         >
           <Typography gutterBottom variant="h5">
             Nothing Phone (1)
+            <Typography variant="body2" color="text.secondary">
+              Date Posted: 10/20/2023
+            </Typography>
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ marginBlock: "20px" }}
+          >
             This OLED panel rivals flagship models like the Pixel 6 when it
             comes to resolution, and it delivers a dynamic refresh rate that can
             go from 60 to 120Hz – this is a fancy way of saying that it'll make
             scrolling and animations look smooth and feel more responsive to
             your touch.
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Date Posted: 10/20/2023
-          </Typography>
         </CardContent>
       </CardActionArea>
       <Box
         sx={{
-          width: "400px",
+          width: {
+            xs: "100%",
+            md: "30%",
+          },
           display: "flex",
-          alignItems: "center",
           flexFlow: "column wrap",
-          paddingBlock: "20px",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box>
           <ButtonGroup
             aria-label="vertical outlined button group"
             variant="text"
             sx={{
               width: "100%",
               height: "50px",
-              display: "flex",
-              justifyContent: "center",
             }}
           >
             {buttons}
