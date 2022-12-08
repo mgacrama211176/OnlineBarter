@@ -16,6 +16,7 @@ import { TbMessageDots } from "react-icons/tb";
 import Rating from "../../component/rating";
 import { Button } from "../../library/theme";
 import Head from "next/head";
+import SignIn from "../../public/images/signIn.jpeg";
 
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
@@ -33,7 +34,7 @@ const index = () => {
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Image
             loader={myLoader}
-            src="https://images.pexels.com/photos/5473962/pexels-photo-5473962.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src={SignIn}
             alt="Profile Image"
             width={320}
             height={320}

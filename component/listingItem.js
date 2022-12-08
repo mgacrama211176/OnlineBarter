@@ -4,7 +4,7 @@ import nothing from "../public/images/nothing.jpg";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+
 import Typography from "@mui/material/Typography";
 import {
   Button,
@@ -22,10 +22,7 @@ const buttons = [
 export default function MultiActionAreaCard() {
   return (
     <Card
-      variant={{
-        xs: "outlined",
-        md: "none",
-      }}
+      variant="none"
       sx={{
         maxWidth: "100%",
 
@@ -57,8 +54,28 @@ export default function MultiActionAreaCard() {
           paddingInline: "10px",
         }}
       >
-        <Image src={nothing} alt="Nothing Phone" width={230} height={180} />
-
+        <Box
+          sx={{
+            position: "relative",
+            width: {
+              xs: "100%",
+              md: "500px",
+            },
+            height: {
+              xs: "150px",
+              md: "150px",
+            },
+          }}
+        >
+          <Image
+            src={nothing}
+            alt="Nothing Phone"
+            fill
+            sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+          />
+        </Box>
         <CardContent
           sx={{
             height: "100%",
