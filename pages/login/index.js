@@ -71,7 +71,7 @@ const Slogan = {
   margin: "10px 0px 30px 0px ",
 };
 
-const index = () => {
+const AuthPage = () => {
   const [login, setLogin] = useState(true);
 
   return (
@@ -218,4 +218,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default AuthPage;
