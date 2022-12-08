@@ -120,7 +120,7 @@ const AuthPage = () => {
                 className={BeVietnamPro.className}
                 sx={Slogan}
               >
-                "Trade your items so that it can benefit others"
+                Trade your items so that it can benefit others
               </Typography>
               <Box sx={InputBoxContainer}>
                 <TextField variant="outlined" label="Email" />
@@ -151,11 +151,10 @@ const AuthPage = () => {
                   margin: "10px",
                 }}
               >
-                "Dont have an account?
+                Dont have an account?
                 <Button sx={ButtonHoverEffect} onClick={() => setLogin(false)}>
                   Signup
                 </Button>
-                "
               </Typography>
             </BoxContainer>
           </>
@@ -170,7 +169,7 @@ const AuthPage = () => {
                 className={BeVietnamPro.className}
                 sx={Slogan}
               >
-                "Trade your items so that it can benefit others"
+                Trade your items so that it can benefit others
               </Typography>
               <Box sx={InputBoxContainer}>
                 <TextField variant="outlined" label="Full Name" />
