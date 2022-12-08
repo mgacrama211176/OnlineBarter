@@ -17,7 +17,7 @@ export const profileList = [
     icon: ForumIcon,
   },
   {
-    link: "profile",
+    link: "mylisting",
     title: "My Listing",
     icon: FormatListBulletedIcon,
   },

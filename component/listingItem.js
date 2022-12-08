@@ -1,4 +1,7 @@
 import * as React from "react";
+import Image from "next/image";
+import nothing from "../public/images/nothing.jpg";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -18,49 +21,97 @@ const buttons = [
 
 export default function MultiActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: "100%", display: "flex", flexDirection: "row" }}>
-      <CardActionArea sx={{ display: "flex", flexDirection: "row" }}>
-        <CardMedia
-          component="img"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSh-jnwAqvpzDODKJhZ8VAkI_aqGTMMgf0bw&usqp=CAU"
-          alt="green iguana"
-          sx={{ backgroundRepeat: "no-repeat", backgroundSize: "auto" }}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+    <Card
+      variant={{
+        xs: "outlined",
+        md: "none",
+      }}
+      sx={{
+        maxWidth: "100%",
+
+        display: {
+          xs: "block",
+          sm: "block",
+          md: "flex",
+        },
+        textAlign: {
+          xs: "center",
+          md: "left",
+        },
+        border: {
+          xs: "1px solid #f3f3f3",
+          md: "none",
+        },
+        height: "100%",
+        margin: "10px 10px",
+      }}
+    >
+      <CardActionArea
+        sx={{
+          display: {
+            xs: "block",
+            sm: "block",
+            md: "flex",
+          },
+
+          paddingInline: "10px",
+        }}
+      >
+        <Image src={nothing} alt="Nothing Phone" width={230} height={180} />
+
+        <CardContent
+          sx={{
+            height: "100%",
+          }}
+        >
+          <Typography gutterBottom variant="h5">
             Nothing Phone (1)
+            <Typography variant="body2" color="text.secondary">
+              Date Posted: 10/20/2023
+            </Typography>
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ marginBlock: "20px" }}
+          >
             This OLED panel rivals flagship models like the Pixel 6 when it
             comes to resolution, and it delivers a dynamic refresh rate that can
             go from 60 to 120Hz – this is a fancy way of saying that it'll make
             scrolling and animations look smooth and feel more responsive to
             your touch.
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Date Posted: 10/20/2023
-          </Typography>
         </CardContent>
       </CardActionArea>
-      <Box>
-        <Typography variant="body2" color="text.secondary">
-          Status
-        </Typography>
-        <ButtonGroup
-          orientation="vertical"
-          aria-label="vertical outlined button group"
-          variant="contained"
-        >
-          {buttons}
-        </ButtonGroup>
-      </Box>
-      <Box>
-        <Typography variant="body2" color="text.secondary">
-          Offers
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          You have 10 offers
-        </Typography>
+      <Box
+        sx={{
+          width: {
+            xs: "100%",
+            md: "30%",
+          },
+          display: "flex",
+          flexFlow: "column wrap",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box>
+          <ButtonGroup
+            aria-label="vertical outlined button group"
+            variant="text"
+            sx={{
+              width: "100%",
+              height: "50px",
+            }}
+          >
+            {buttons}
+          </ButtonGroup>
+        </Box>
+        <Box sx={{ marginTop: "10px", width: "100%", textAlign: "center" }}>
+          <Typography variant="body2" color="text.secondary">
+            You currently have 10 offers
+          </Typography>
+        </Box>
       </Box>
     </Card>
   );
