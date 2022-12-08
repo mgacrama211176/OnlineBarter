@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { Be_Vietnam_Pro } from "@next/font/google";
 import Logo from "../../component/logo";
+import Image from "next/image";
+import SignInImg from "../../public/images/signIn.jpeg";
 
 //MUI
 import { Container, Box, Typography, TextField, Button } from "@mui/material";
@@ -70,7 +72,7 @@ const Slogan = {
 };
 
 const index = () => {
-  const [login, setLogin] = useState("true");
+  const [login, setLogin] = useState(true);
 
   return (
     <Container
@@ -97,10 +99,12 @@ const index = () => {
         <Box sx={{ objectFit: "cover" }}>
           <ImgGone>
             <div sx={imgContainer}>
-              <img
-                src="https://images.pexels.com/photos/4050346/pexels-photo-4050346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              <Image
+                src={SignInImg}
                 style={ImgStyle}
-              ></img>
+                width="100%"
+                height="100%"
+              />
             </div>
           </ImgGone>
         </Box>
