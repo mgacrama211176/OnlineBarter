@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import { Be_Vietnam_Pro } from "@next/font/google";
 import Logo from "../../component/logo";
