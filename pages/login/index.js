@@ -79,7 +79,7 @@ const AuthPage = () => {
   const [login, setLogin] = useState(true);
 
   const GoogleSignInHandler = async () => {
-    signIn("google", { callbackUrl: "https://online-barter.vercel.app/" });
+    signIn("google", { callbackUrl: "http://localhost:3000/" });
   };
 
   return (

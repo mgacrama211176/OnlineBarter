@@ -1,4 +1,5 @@
 const handler = (request, response, next) => {
-  response.status(200).json(`This is from the API`);
+  console.log(process.env.GOOGLE_CLIENT_ID, 123213);
+  response.status(200).json(process.env.GOOGLE_CLIENT_SECRET);
 };
 export default handler;

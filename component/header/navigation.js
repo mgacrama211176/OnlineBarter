@@ -69,7 +69,13 @@ const HeaderNavigation = () => {
           }}
         />
 
-        {session ? <AccountMenu /> : <Button variant="outlined"> Login</Button>}
+        {session ? (
+          <AccountMenu />
+        ) : (
+          <Link href={"/login"}>
+            <Button variant="outlined"> Login</Button>
+          </Link>
+        )}
       </Box>
     </>
   );

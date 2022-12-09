@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 //Components
 import { profileList } from "../../library/media-profile";
@@ -18,6 +18,8 @@ import { Button, Typography } from "@mui/material";
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const { data: session } = useSession();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -40,7 +42,9 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 30, height: 30 }}>M</Avatar>
+            <Avatar sx={{ width: 30, height: 30 }}>
+              {session.user?.name.substring(0, 1)}
+            </Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -90,7 +94,7 @@ export default function AccountMenu() {
               </MenuItem>
             </Link>
           ) : (
-            <MenuItem onClick={logoutHandler}>
+            <MenuItem onClick={logoutHandler} key={index}>
               <ListItemIcon>
                 <list.icon fontSize="small" />
               </ListItemIcon>
