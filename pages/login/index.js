@@ -1,6 +1,10 @@
+//PACKAGES
 import { useState } from "react";
 import Head from "next/head";
 import { Be_Vietnam_Pro } from "@next/font/google";
+import { signIn } from "next-auth/react";
+
+//COMPONENTS
 import Logo from "../../component/logo";
 import Image from "next/image";
 import SignInImg from "../../public/images/signIn.jpeg";
@@ -74,6 +78,10 @@ const Slogan = {
 const AuthPage = () => {
   const [login, setLogin] = useState(true);
 
+  const GoogleSignInHandler = async () => {
+    signIn("google", { callbackUrl: "https://online-barter.vercel.app/" });
+  };
+
   return (
     <Container
       sx={{
@@ -129,10 +137,15 @@ const AuthPage = () => {
                   Login
                 </Button>
 
-                <Button variant="outlined" sx={mediaButton}>
+                <Button
+                  variant="outlined"
+                  sx={mediaButton}
+                  onClick={GoogleSignInHandler}
+                >
                   Sign in using Google
                   <FcGoogle size={30} />
                 </Button>
+
                 <Button variant="outlined" sx={mediaButton}>
                   Sign in using Facebook
                   <div>

@@ -1,7 +1,11 @@
 import * as React from "react";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
+
+//Components
 import { profileList } from "../../library/media-profile";
 
+//MUI
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -9,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -20,6 +24,11 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const logoutHandler = () => {
+    signOut();
+  };
+
   return (
     <React.Fragment>
       <Box>
@@ -70,16 +79,25 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        {profileList.map((list, index) => (
-          <Link href={`/${list.link}`} key={index}>
-            <MenuItem>
+        {profileList.map((list, index) =>
+          list.title !== "Logout" ? (
+            <Link href={`/${list.link}`} key={index}>
+              <MenuItem>
+                <ListItemIcon>
+                  <list.icon fontSize="small" />
+                </ListItemIcon>
+                {list.title}
+              </MenuItem>
+            </Link>
+          ) : (
+            <MenuItem onClick={logoutHandler}>
               <ListItemIcon>
                 <list.icon fontSize="small" />
               </ListItemIcon>
               {list.title}
             </MenuItem>
-          </Link>
-        ))}
+          )
+        )}
       </Menu>
     </React.Fragment>
   );

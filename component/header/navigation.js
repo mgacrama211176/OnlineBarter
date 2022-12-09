@@ -2,8 +2,11 @@ import { Box, Button, IconButton, List, ListItem } from "@mui/material";
 import Link from "next/link";
 import AccountMenu from "./profile";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import { useSession } from "next-auth/react";
 
 const HeaderNavigation = () => {
+  const { data: session } = useSession();
+
   return (
     <>
       <Box
@@ -65,7 +68,8 @@ const HeaderNavigation = () => {
             },
           }}
         />
-        <AccountMenu />
+
+        {session ? <AccountMenu /> : <Button variant="outlined"> Login</Button>}
       </Box>
     </>
   );

@@ -16,7 +16,7 @@ function MyApp({
   pageProps,
 }) {
   return (
-    <SessionProvider>
+    <SessionProvider session={pageProps.session}>
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
           <Layout>
