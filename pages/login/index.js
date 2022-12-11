@@ -3,6 +3,8 @@ import { useState } from "react";
 import Head from "next/head";
 import { Be_Vietnam_Pro } from "@next/font/google";
 import { signIn } from "next-auth/react";
+import { useFormik } from "formik";
+import { validate } from "../../library/Formik/LoginValidation";
 
 //COMPONENTS
 import Logo from "../../component/logo";
@@ -18,6 +20,7 @@ import { RiFacebookBoxFill } from "react-icons/ri";
 
 //Responsive themes
 import { BoxContainer, ImgGone } from "../../library/media";
+import { get } from "react-hook-form";
 
 const BeVietnamPro = Be_Vietnam_Pro({
   weight: "100",
@@ -81,6 +84,20 @@ const AuthPage = () => {
   const GoogleSignInHandler = async () => {
     signIn("google", { callbackUrl: "http://localhost:3000/" });
   };
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      email: "",
+      loginEmail: "",
+      loginPassword: "",
+      password: "",
+      cpassword: "",
+    },
+    validate: validate,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <Container
@@ -131,8 +148,30 @@ const AuthPage = () => {
                 Trade your items so that it can benefit others
               </Typography>
               <Box sx={InputBoxContainer}>
-                <TextField variant="outlined" label="Email" />
-                <TextField variant="outlined" label="Password" />
+                <TextField
+                  variant="outlined"
+                  label="Email"
+                  {...formik.getFieldProps("loginEmail")}
+                  error={
+                    formik.touched.loginEmail &&
+                    Boolean(formik.errors.loginEmail)
+                  }
+                  helperText={
+                    formik.touched.loginEmail && formik.errors.loginEmail
+                  }
+                />
+                <TextField
+                  variant="outlined"
+                  label="Password"
+                  {...formik.getFieldProps("loginPassword")}
+                  error={
+                    formik.touched.loginPassword &&
+                    Boolean(formik.errors.loginPassword)
+                  }
+                  helperText={
+                    formik.touched.loginPassword && formik.errors.loginPassword
+                  }
+                />
                 <Button variant="outlined" sx={loginButton}>
                   Login
                 </Button>
@@ -185,19 +224,43 @@ const AuthPage = () => {
                 Trade your items so that it can benefit others
               </Typography>
               <Box sx={InputBoxContainer}>
-                <TextField variant="outlined" label="Full Name" />
-                <TextField variant="outlined" label="Email" />
+                <TextField
+                  variant="outlined"
+                  label="Full Name"
+                  {...formik.getFieldProps("fullName")}
+                  error={
+                    formik.touched.fullName && Boolean(formik.errors.fullName)
+                  }
+                  helperText={formik.errors.fullName && formik.errors.fullName}
+                />
+                <TextField
+                  variant="outlined"
+                  label="Email"
+                  {...formik.getFieldProps("email")}
+                  error={formik.touched.email && Boolean(formik.errors.email)}
+                  helperText={formik.touched.email && formik.errors.email}
+                />
                 <TextField
                   variant="outlined"
                   label="Password"
                   type="password"
+                  {...formik.getFieldProps("password")}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
+                  helperText={formik.touched.password && formik.errors.password}
                 />
                 <TextField
                   variant="outlined"
                   label="Verify Password"
                   type="password"
+                  {...formik.getFieldProps("cpassword")}
                 />
-                <Button variant="outlined" sx={loginButton}>
+                <Button
+                  variant="outlined"
+                  sx={loginButton}
+                  onClick={formik.handleSubmit}
+                >
                   Register
                 </Button>
               </Box>
