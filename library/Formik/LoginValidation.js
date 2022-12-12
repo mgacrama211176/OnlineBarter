@@ -23,6 +23,16 @@ export const validate = (values) => {
     errors.password = "Password must not contain spaces";
   }
 
+  if (!values.cpassword) {
+    errors.cpassword = "Password Required";
+  } else if (values.cpassword.length < 8 && values.cpassword.length > 20) {
+    errors.cpassword = "Password must not be less than 8 or greater than 20";
+  } else if (values.password.includes(" ")) {
+    errors.cpassword = "Password must not contain spaces";
+  } else if (values.password !== values.cpassword) {
+    errors.cpassword = "Passowrd did not match!";
+  }
+
   if (!values.loginPassword) {
     errors.loginPassword = "Password Required";
   } else if (
@@ -37,6 +47,8 @@ export const validate = (values) => {
 
   if (!values.fullName) {
     errors.fullName = "Full Name Required";
+  } else if (values.fullName.trim() === "") {
+    errors.fullName = "Please Enter Valid Name";
   }
 
   return errors;

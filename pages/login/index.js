@@ -12,11 +12,20 @@ import Image from "next/image";
 import SignInImg from "../../public/images/signIn.jpeg";
 
 //MUI
-import { Container, Box, Typography, TextField, Button } from "@mui/material";
+import {
+  Container,
+  Box,
+  Typography,
+  TextField,
+  Button,
+  InputAdornment,
+} from "@mui/material";
 
 //ICONS
 import { FcGoogle } from "react-icons/fc";
 import { RiFacebookBoxFill } from "react-icons/ri";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 //Responsive themes
 import { BoxContainer, ImgGone } from "../../library/media";
@@ -80,6 +89,10 @@ const Slogan = {
 
 const AuthPage = () => {
   const [login, setLogin] = useState(true);
+  const [showPassword, setshowPassword] = useState({
+    password: false,
+    cpassword: false,
+  });
 
   const GoogleSignInHandler = async () => {
     signIn("google", { callbackUrl: "http://localhost:3000/" });
@@ -231,7 +244,7 @@ const AuthPage = () => {
                   error={
                     formik.touched.fullName && Boolean(formik.errors.fullName)
                   }
-                  helperText={formik.errors.fullName && formik.errors.fullName}
+                  helperText={formik.touched.fullName && formik.errors.fullName}
                 />
                 <TextField
                   variant="outlined"
@@ -243,18 +256,64 @@ const AuthPage = () => {
                 <TextField
                   variant="outlined"
                   label="Password"
-                  type="password"
+                  type={!showPassword.password ? "password" : "text"}
                   {...formik.getFieldProps("password")}
                   error={
                     formik.touched.password && Boolean(formik.errors.password)
                   }
                   helperText={formik.touched.password && formik.errors.password}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment
+                        position="end"
+                        sx={{ cursor: "pointer" }}
+                        onClick={() =>
+                          setshowPassword((prevState) => ({
+                            ...prevState,
+                            password: !prevState.password,
+                          }))
+                        }
+                      >
+                        {showPassword.password ? (
+                          <VisibilityOffIcon />
+                        ) : (
+                          <VisibilityIcon />
+                        )}
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   variant="outlined"
                   label="Verify Password"
-                  type="password"
+                  type={!showPassword.cpassword ? "password" : "text"}
                   {...formik.getFieldProps("cpassword")}
+                  error={
+                    formik.touched.cpassword && Boolean(formik.errors.cpassword)
+                  }
+                  helperText={
+                    formik.touched.cpassword && formik.errors.cpassword
+                  }
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment
+                        position="end"
+                        sx={{ cursor: "pointer" }}
+                        onClick={() =>
+                          setshowPassword((prevState) => ({
+                            ...prevState,
+                            cpassword: !prevState.cpassword,
+                          }))
+                        }
+                      >
+                        {showPassword.cpassword ? (
+                          <VisibilityOffIcon />
+                        ) : (
+                          <VisibilityIcon />
+                        )}
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <Button
                   variant="outlined"
