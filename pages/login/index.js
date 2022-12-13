@@ -5,10 +5,11 @@ import { Be_Vietnam_Pro } from "@next/font/google";
 import { signIn } from "next-auth/react";
 import { useFormik } from "formik";
 import { validate } from "../../library/Formik/LoginValidation";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 //COMPONENTS
 import Logo from "../../component/logo";
-import Image from "next/image";
 import SignInImg from "../../public/images/signIn.jpeg";
 
 //MUI
@@ -29,7 +30,6 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 //Responsive themes
 import { BoxContainer, ImgGone } from "../../library/media";
-import { get } from "react-hook-form";
 
 const BeVietnamPro = Be_Vietnam_Pro({
   weight: "100",
@@ -93,23 +93,39 @@ const AuthPage = () => {
     password: false,
     cpassword: false,
   });
+  const router = useRouter();
 
   const GoogleSignInHandler = async () => {
+    //redirect: true
     signIn("google", { callbackUrl: "http://localhost:3000/" });
   };
+
+  const CredentialSignInHandler = async (values) => {
+    console.log(values);
+
+    //{ useSession, signIn , signOut} from 'next-auth/react'
+    //signIn(provider, { redirect: true, callBackurl: ''})
+
+    const status = await signIn("credentials", {
+      redirect: false,
+      email: values.loginEmail,
+      password: values.loginPassword,
+      callbackUrl: "/",
+    });
+    console.log(status);
+
+    if (status.ok && !status.error) {
+      router.push(status.url);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
-      fullName: "",
-      email: "",
       loginEmail: "",
       loginPassword: "",
-      password: "",
-      cpassword: "",
     },
     validate: validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: CredentialSignInHandler,
   });
 
   return (
@@ -122,12 +138,6 @@ const AuthPage = () => {
       }}
     >
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap"
-          rel="stylesheet"
-        />
         <title>Login</title>
         <meta desc="This is where the users can create or login on their account to use the service."></meta>
       </Head>
@@ -139,6 +149,7 @@ const AuthPage = () => {
             <div sx={imgContainer}>
               <Image
                 src={SignInImg}
+                alt="sign in"
                 style={ImgStyle}
                 width="100%"
                 height="100%"
@@ -160,34 +171,38 @@ const AuthPage = () => {
               >
                 Trade your items so that it can benefit others
               </Typography>
+
               <Box sx={InputBoxContainer}>
-                <TextField
-                  variant="outlined"
-                  label="Email"
-                  {...formik.getFieldProps("loginEmail")}
-                  error={
-                    formik.touched.loginEmail &&
-                    Boolean(formik.errors.loginEmail)
-                  }
-                  helperText={
-                    formik.touched.loginEmail && formik.errors.loginEmail
-                  }
-                />
-                <TextField
-                  variant="outlined"
-                  label="Password"
-                  {...formik.getFieldProps("loginPassword")}
-                  error={
-                    formik.touched.loginPassword &&
-                    Boolean(formik.errors.loginPassword)
-                  }
-                  helperText={
-                    formik.touched.loginPassword && formik.errors.loginPassword
-                  }
-                />
-                <Button variant="outlined" sx={loginButton}>
-                  Login
-                </Button>
+                <form onSubmit={formik.handleSubmit}>
+                  <TextField
+                    variant="outlined"
+                    label="Email"
+                    {...formik.getFieldProps("loginEmail")}
+                    error={
+                      formik.touched.loginEmail &&
+                      Boolean(formik.errors.loginEmail)
+                    }
+                    helperText={
+                      formik.touched.loginEmail && formik.errors.loginEmail
+                    }
+                  />
+                  <TextField
+                    variant="outlined"
+                    label="Password"
+                    {...formik.getFieldProps("loginPassword")}
+                    error={
+                      formik.touched.loginPassword &&
+                      Boolean(formik.errors.loginPassword)
+                    }
+                    helperText={
+                      formik.touched.loginPassword &&
+                      formik.errors.loginPassword
+                    }
+                  />
+                  <Button type="submit" variant="outlined" sx={loginButton}>
+                    Login
+                  </Button>
+                </form>
 
                 <Button
                   variant="outlined"
@@ -205,6 +220,7 @@ const AuthPage = () => {
                   </div>
                 </Button>
               </Box>
+
               <Typography
                 variant="body"
                 className={BeVietnamPro.className}
@@ -225,7 +241,7 @@ const AuthPage = () => {
           </>
         ) : (
           <>
-            <BoxContainer>
+            {/* <BoxContainer>
               <div>
                 <Logo />
               </div>
@@ -344,7 +360,7 @@ const AuthPage = () => {
                   {login ? "Signup" : "Login"}
                 </Button>
               </Typography>
-            </BoxContainer>
+            </BoxContainer> */}
           </>
         )}
       </Container>

@@ -1,4 +1,9 @@
 import React from "react";
+import Head from "next/head";
+import SignIn from "../../public/images/signIn.jpeg";
+import Image from "next/image";
+import { signIn, useSession } from "next-auth/react";
+
 import {
   Container,
   Box,
@@ -10,19 +15,19 @@ import {
   TableCell,
   styled,
 } from "@mui/material";
-import Image from "next/image";
+
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { TbMessageDots } from "react-icons/tb";
 import Rating from "../../component/rating";
 import { Button } from "../../library/theme";
-import Head from "next/head";
-import SignIn from "../../public/images/signIn.jpeg";
 
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
 
-const index = () => {
+const ProfilePage = () => {
+  const { data: session } = useSession();
+
   return (
     <Container sx={{ marginTop: "50px" }}>
       <Head>
@@ -57,7 +62,12 @@ const index = () => {
             }}
           >
             <Box>
-              <h1>Resha Valentine</h1>
+              {session ? (
+                <h1>{session.user?.name}</h1>
+              ) : (
+                <h1>Resha Valentine</h1>
+              )}
+
               <h2>
                 <FaMapMarkerAlt />
                 Cebu City
@@ -118,4 +128,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default ProfilePage;

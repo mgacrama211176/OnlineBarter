@@ -14,6 +14,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { Button, Typography } from "@mui/material";
+import Image from "next/image";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,9 +43,19 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 30, height: 30 }}>
-              {session.user?.name.substring(0, 1)}
-            </Avatar>
+            {session.user?.image ? (
+              <Image
+                src={session.user.image}
+                alt={session.user.name}
+                width={40}
+                height={40}
+                style={{ borderRadius: "100%" }}
+              />
+            ) : (
+              <Avatar sx={{ width: 30, height: 30 }}>
+                {session.user?.name?.substring(0, 1)}
+              </Avatar>
+            )}
           </IconButton>
         </Tooltip>
       </Box>
