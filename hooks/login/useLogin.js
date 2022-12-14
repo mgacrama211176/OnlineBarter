@@ -30,7 +30,7 @@ const useLogin = () => {
   };
 
   const FacebookSignInHandler = async () => {
-    signIn("facebook", { callbackUrl: "http://localhost:3000/" });
+    signIn("facebook", { callbackUrl: "https://localhost:3000/" });
   };
 
   const CredentialSignInHandler = async (values) => {

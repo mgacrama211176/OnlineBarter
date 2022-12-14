@@ -90,7 +90,7 @@ const LogIn = () => {
       <Button
         variant="outlined"
         sx={mediaButton}
-        onClick={FacebookSignInHandler}
+        // onClick={FacebookSignInHandler}
       >
         Sign in using Facebook
         <div>
