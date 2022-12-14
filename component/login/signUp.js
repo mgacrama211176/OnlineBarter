@@ -1,24 +1,43 @@
-import React from "react";
-import useLogin from "../hooks/login/useLogin";
+import useLogin from "../../hooks/login/useLogin";
 
 //COMPONENTS
-import {
-  InputBoxContainer,
-  loginButton,
-  textfield,
-} from "../../library/authPage/mediAuth";
+import { textfield } from "../../library/authPage/mediAuth";
 
 //MUI
-import { Box, TextField, Button, InputAdornment } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  InputAdornment,
+  Alert,
+  Typography,
+} from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
+import { green } from "@mui/material/colors";
+import Snackbar from "@mui/material/Snackbar";
 
 //ICONS
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Register = () => {
-  const { formik, showPassword, setshowPassword } = useLogin();
+  const {
+    error,
+    state,
+    success,
+    setSucess,
+    isLoading,
+    formik,
+    showPassword,
+    setshowPassword,
+  } = useLogin();
+  console.log(isLoading);
+
   return (
     <form onSubmit={formik.handleSubmit}>
+      <Typography variant="p" sx={{ color: "red" }}>
+        {error}
+      </Typography>
       <TextField
         variant="outlined"
         label="Full Name"
@@ -93,9 +112,50 @@ const Register = () => {
           ),
         }}
       />
-      <Button type="submit" variant="outlined" sx={loginButton}>
-        Register
-      </Button>
+      <Box
+        sx={{
+          mt: "20px",
+          position: "relative",
+          width: "100%",
+          display: "flex",
+        }}
+      >
+        <Button
+          fullWidth
+          variant="contained"
+          type="submit"
+          disabled={isLoading}
+          sx={{ color: "white", height: "56px" }}
+        >
+          Register
+        </Button>
+        {isLoading && (
+          <CircularProgress
+            size={24}
+            sx={{
+              color: green[500],
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              marginTop: "-12px",
+              marginLeft: "-12px",
+            }}
+          />
+        )}
+      </Box>
+
+      <Snackbar
+        color="white"
+        anchorOrigin={state}
+        open={success}
+        onClose={() => setSucess(false)}
+        autoHideDuration={2000}
+        key={state}
+      >
+        <Alert onClose={success} severity="success">
+          Data Succesfully Added
+        </Alert>
+      </Snackbar>
     </form>
   );
 };

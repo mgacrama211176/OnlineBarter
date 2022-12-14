@@ -1,11 +1,12 @@
 import { useState } from "react";
+
 import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import { SignInValidation } from "../../../library/Formik/signInValidation";
+import axios from "axios";
 
-//COMPONENT
-import { validate } from "../../../library/Formik/LoginValidation";
+import { validate } from "../../library/Formik/LoginValidation";
+import { SignInValidation } from "../../library/Formik/signInValidation";
 
 const useLogin = () => {
   const [login, setLogin] = useState(true);
@@ -13,13 +14,22 @@ const useLogin = () => {
     password: false,
     cpassword: false,
   });
+  const [isLoading, setisLoading] = useState(false);
+  const [success, setSucess] = useState(false);
+  const [state, setState] = useState({
+    vertical: "top",
+    horizontal: "center",
+  });
+
+  const [error, setError] = useState();
+
   const router = useRouter();
 
   const GoogleSignInHandler = async () => {
     signIn("google", { callbackUrl: "http://localhost:3000/" });
   };
 
-  const CredentialHandler = async (values) => {
+  const CredentialSignInHandler = async (values) => {
     console.log(values);
     const status = await signIn("credentials", {
       redirect: false,
@@ -31,20 +41,29 @@ const useLogin = () => {
     if (status.ok && !status.error) {
       router.push(status.url);
     }
+
+    if (status.error) {
+      setTimeout(() => {
+        setError(status.error);
+      }, 2000);
+    }
   };
 
-  const CredentialSignInHandler = async (values, e) => {
-    e.preventDefault();
-    console.log(values);
-    const status = await signIn("credentials", {
-      redirect: false,
-      email: values.loginEmail,
-      password: values.loginPassword,
-      callbackUrl: "/",
-    });
+  const SignUpHandler = async (values) => {
+    setSucess(false);
+    try {
+      setisLoading(true);
+      const result = await axios.post("/api/auth/register", values);
+      formik.resetForm({
+        values: "",
+      });
 
-    if (status.ok && !status.error) {
-      router.push(status.url);
+      return result;
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setisLoading(false);
+      setSucess(true);
     }
   };
 
@@ -54,11 +73,9 @@ const useLogin = () => {
       email: "",
       password: "",
       cpassword: "",
-      loginEmail: "",
-      loginPassword: "",
     },
     validate: validate,
-    onSubmit: CredentialSignInHandler,
+    onSubmit: SignUpHandler,
   });
 
   const formikSignIn = useFormik({
@@ -67,7 +84,7 @@ const useLogin = () => {
       loginPassword: "",
     },
     validate: SignInValidation,
-    onSubmit: CredentialHandler,
+    onSubmit: CredentialSignInHandler,
   });
 
   return {
@@ -79,6 +96,11 @@ const useLogin = () => {
     showPassword,
     setshowPassword,
     signIn,
+    isLoading,
+    success,
+    setSucess,
+    state,
+    error,
   };
 };
 

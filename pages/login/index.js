@@ -1,6 +1,6 @@
 //PACKAGES
 import Head from "next/head";
-import useLogin from "../../component/hooks/login/useLogin";
+import useLogin from "../../hooks/login/useLogin";
 import { Be_Vietnam_Pro } from "@next/font/google";
 
 import Image from "next/image";
@@ -93,12 +93,16 @@ const AuthPage = () => {
                   <Register />
                 </Box>
               )}
-              Dont have an account?
+              {login ? (
+                <Typography variant="p">Dont have an account? </Typography>
+              ) : (
+                <Typography variant="p">Already have an account? </Typography>
+              )}
               <Button
                 sx={ButtonHoverEffect}
                 onClick={() => setLogin((prevState) => !prevState)}
               >
-                Signup
+                {login ? "Signup" : "Signin"}
               </Button>
             </Typography>
           </BoxContainer>
