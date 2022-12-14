@@ -18,8 +18,13 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const LogIn = () => {
-  const { formikSignIn, showPassword, setshowPassword, GoogleSignInHandler } =
-    useLogin();
+  const {
+    formikSignIn,
+    showPassword,
+    setshowPassword,
+    GoogleSignInHandler,
+    FacebookSignInHandler,
+  } = useLogin();
 
   return (
     <>
@@ -82,7 +87,11 @@ const LogIn = () => {
         <FcGoogle size={30} />
       </Button>
 
-      <Button variant="outlined" sx={mediaButton}>
+      <Button
+        variant="outlined"
+        sx={mediaButton}
+        onClick={FacebookSignInHandler}
+      >
         Sign in using Facebook
         <div>
           <RiFacebookBoxFill size={30} color={"#475993"} />

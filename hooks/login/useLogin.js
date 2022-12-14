@@ -29,6 +29,10 @@ const useLogin = () => {
     signIn("google", { callbackUrl: "http://localhost:3000/" });
   };
 
+  const FacebookSignInHandler = async () => {
+    signIn("facebook", { callbackUrl: "http://localhost:3000/" });
+  };
+
   const CredentialSignInHandler = async (values) => {
     console.log(values);
     const status = await signIn("credentials", {
@@ -88,6 +92,7 @@ const useLogin = () => {
   });
 
   return {
+    FacebookSignInHandler,
     GoogleSignInHandler,
     formik,
     formikSignIn,
