@@ -1,8 +1,5 @@
 //PACKAGES
 import useLogin from "../hooks/login/useLogin";
-import { useFormik } from "formik";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
 
 //COMPONENT
 import {
