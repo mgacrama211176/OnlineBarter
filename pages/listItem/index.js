@@ -1,8 +1,13 @@
 import React from "react";
 import { Container, Box, Typography, TextField } from "@mui/material";
 import { Button } from "../../library/theme";
+import Image from "next/image";
 
 const index = () => {
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
+
   return (
     <div>
       <Container
@@ -12,7 +17,6 @@ const index = () => {
           flexDirection: "column",
           height: "auto",
           maxHeight: "100%",
-          overflow: "auto",
           marginTop: "30px",
         }}
       >
@@ -25,37 +29,144 @@ const index = () => {
           </Typography>
         </Box>
         <hr />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: { md: "space-evenly" },
-            flexDirection: { xs: "column", md: "row" },
-            gap: 2,
-          }}
-        >
-          {/* LEFT */}
-          <div>
-            <TextField id="Item Name" variant="outlined" label="Item Name" />
-
+        <Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: { md: "space-evenly" },
+              flexDirection: { xs: "column", md: "row" },
+              gap: 2,
+            }}
+          >
+            {/* LEFT */}
             <Box
               sx={{
                 display: "flex",
-                alignItems: "center",
-                gap: "2px",
-                justifyContent: { xs: "center" },
+                justifyContent: "center",
+                flexDirection: "column",
+                width: { md: "50%" },
               }}
             >
-              <Button>Upload</Button>
-              <Typography
-                variant="h6"
-                sx={{ fontSize: { xs: "12px" }, marginTop: "8px" }}
-              >
-                Upload Item Image
-              </Typography>
-            </Box>
-          </div>
+              <TextField id="Item Name" variant="outlined" label="Item Name" />
 
-          <div>Right</div>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "2px",
+                  justifyContent: { xs: "center" },
+                  flexDirection: "column",
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Button>Upload</Button>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontSize: { xs: "12px" }, marginTop: "8px" }}
+                  >
+                    Upload Item Image
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: 1,
+                    flexFlow: "wrap row",
+                    justifyContent: "center",
+                    marginTop: "10px",
+                    width: "100%",
+                    padding: "10px",
+                  }}
+                >
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="item Image"
+                    src={
+                      "https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    }
+                    loader={myLoader}
+                  />
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="item Image"
+                    src={
+                      "https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    }
+                    loader={myLoader}
+                  />
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="item Image"
+                    src={
+                      "https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    }
+                    loader={myLoader}
+                  />
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="item Image"
+                    src={
+                      "https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    }
+                    loader={myLoader}
+                  />
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="item Image"
+                    src={
+                      "https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    }
+                    loader={myLoader}
+                  />
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="item Image"
+                    src={
+                      "https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    }
+                    loader={myLoader}
+                  />
+                </Box>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{ display: "flex", gap: 2, flexDirection: { xs: "column" } }}
+            >
+              <TextField id="Reason" variant="outlined" label="Trade Reason" />
+              <TextField id="Looking" variant="outlined" label="Looking for" />
+              <TextField
+                id="purchaseDate"
+                variant="outlined"
+                label="Date Purchased"
+                type="date"
+                focused="true"
+              />
+              <TextField id="category" variant="outlined" label="Category" />
+            </Box>
+          </Box>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <TextField
+              id="Address"
+              variant="outlined"
+              label="Address"
+              fullWidth
+            />
+            <TextField
+              id="Description"
+              variant="outlined"
+              label="Description"
+              fullWidth
+            />
+          </Box>
+          <Box>{/* BUTTONS HERE */}</Box>
         </Box>
       </Container>
     </div>

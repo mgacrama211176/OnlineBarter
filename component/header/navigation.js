@@ -42,7 +42,7 @@ const HeaderNavigation = () => {
             <Link href="/">Whats New?</Link>
           </ListItem>
           <ListItem>
-            <Link href="/">
+            <Link href="/listItem">
               <Button
                 variant="contained"
                 sx={{
