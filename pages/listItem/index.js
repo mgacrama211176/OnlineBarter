@@ -72,13 +72,33 @@ const index = () => {
                   sx={{
                     display: "flex",
                     gap: 1,
-                    flexFlow: "wrap row",
+                    flexFlow: "nowrap row",
                     justifyContent: "center",
                     marginTop: "10px",
                     width: "100%",
                     padding: "10px",
+                    border: "1px solid black",
+                    overflowY: "scroll",
                   }}
                 >
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="item Image"
+                    src={
+                      "https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    }
+                    loader={myLoader}
+                  />
+                  <Image
+                    width={100}
+                    height={100}
+                    alt="item Image"
+                    src={
+                      "https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    }
+                    loader={myLoader}
+                  />
                   <Image
                     width={100}
                     height={100}
@@ -152,7 +172,14 @@ const index = () => {
               <TextField id="category" variant="outlined" label="Category" />
             </Box>
           </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              marginTop: "10px",
+            }}
+          >
             <TextField
               id="Address"
               variant="outlined"
@@ -160,13 +187,26 @@ const index = () => {
               fullWidth
             />
             <TextField
+              id="preferred"
+              variant="outlined"
+              label="Preferred meetup Location"
+              fullWidth
+            />
+            <TextField
               id="Description"
               variant="outlined"
               label="Description"
               fullWidth
+              maxRows={4}
+              multiline
             />
           </Box>
-          <Box>{/* BUTTONS HERE */}</Box>
+          <Box
+            sx={{ display: "flex", justifyContent: "center", margin: "5px" }}
+          >
+            <Button>Save</Button>
+            <Button>Exit</Button>
+          </Box>
         </Box>
       </Container>
     </div>
