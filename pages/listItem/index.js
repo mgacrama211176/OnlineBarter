@@ -2,11 +2,16 @@ import React from "react";
 import { Container, Box, Typography, TextField } from "@mui/material";
 import { Button } from "../../library/theme";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const index = () => {
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
+
+  const { data: session } = useSession();
+
+  console.log(session?.user);
 
   return (
     <div>
@@ -167,7 +172,7 @@ const index = () => {
                 variant="outlined"
                 label="Date Purchased"
                 type="date"
-                focused="true"
+                focused
               />
               <TextField id="category" variant="outlined" label="Category" />
             </Box>

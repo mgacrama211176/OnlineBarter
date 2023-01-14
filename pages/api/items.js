@@ -1,22 +1,21 @@
 import connectMongo from "../../library/database/connection";
 import Items from "../../models/ItemSchema";
 
-export default async function handler(req, res) {
+export default async function handler(request, response) {
   // const connect = await connectMongo();
-  connectMongo().catch((error) => res.json({ error: "Connection Failed..!" }));
+  connectMongo().catch((error) => request.json({ error: "Connection Failed..!" }));
 
-  if (req.method === "POST") {
-    const item = req.body;
+  if (request.method === "POST") {
+    const item = request.body;
 
     Items.create(item, function (err, data) {
-      if (err) return res.status(404).json({ message: err.message });
-
-      res.status(200).json({ status: true, data: data });
+      if (err) return response.status(404).json({ message: err.message });
+      response.status(200).json({ status: true, data: data });
     });
   }
 
-  if (req.method === "GET") {
+  if (request.method === "GET") {
     const fetching = await Items.find({});
-    res.status(200).json(fetching);
+    response.status(200).json(fetching);
   }
 }
